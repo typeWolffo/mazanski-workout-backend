@@ -18,9 +18,7 @@ export class UsersService {
   async create(userData: any): Promise<any> {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(userData.password, salt);
-    const userId = Date.now();
     const newUser = {
-      id: userId,
       username: userData.username,
       password: hashedPassword,
     };
