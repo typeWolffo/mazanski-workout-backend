@@ -5,11 +5,11 @@ export class test1662657077409 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `ALTER TABLE "excercises" ADD "time" character varying NOT NULL`,
+      `ALTER TABLE "exercises" ADD "time" character varying NOT NULL`,
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`ALTER TABLE "excercises" DROP COLUMN "time"`);
+    await queryRunner.query(`ALTER TABLE "exercises" DROP COLUMN "time"`);
   }
 }
