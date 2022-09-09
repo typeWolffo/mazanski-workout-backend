@@ -1,26 +1,21 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
 import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
+import { DatabaseModule } from './database/database.module';
+import { ExcerciseSetsModule } from './excercise-sets/excercise-sets.module';
+import { ExcercisesModule } from './excercises/excercises.module';
 import { UsersModule } from './users/users.module';
-import { JwtService } from '@nestjs/jwt';
-import { ConfigModule } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
     AuthModule,
     UsersModule,
     ConfigModule.forRoot(),
-    TypeOrmModule.forRoot({
-      url: process.env.DATABASE_URL,
-      type: 'postgres',
-      ssl: {
-        rejectUnauthorized: false,
-      },
-      entities: ['dist/**/*.entity{.ts,.js}'],
-      synchronize: true, // This for development
-      autoLoadEntities: true,
-    }),
+    ExcercisesModule,
+    ExcerciseSetsModule,
+    DatabaseModule,
   ],
   controllers: [AppController],
   providers: [JwtService],
