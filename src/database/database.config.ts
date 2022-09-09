@@ -1,5 +1,5 @@
 import { ConfigType, registerAs } from '@nestjs/config';
-import path from 'path';
+import * as path from 'path';
 import { DataSourceOptions } from 'typeorm';
 import { ExcerciseSetEntity } from './../excercise-sets/excercise-set.entity';
 import { ExcerciseEntity } from './../excercises/excercise.entity';
@@ -19,7 +19,7 @@ export const makeDatabaseConfig = (
   return {
     type: 'postgres',
     url: databaseUrl,
-    entities: [path?.join(__dirname, '..', '**', '*.entity.{ts,js}')],
+    entities: [path.join(__dirname, '/../**/*.entity.{js,ts}')],
     // migrations: [path?.join(__dirname, 'migrations', '*.{js,ts}')],
 
     // entities: [User, ExcerciseSetEntity, ExcerciseEntity],
