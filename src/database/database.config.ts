@@ -19,6 +19,6 @@ export const makeDatabaseConfig = (
     entities: [path.join(__dirname, '/../**/*.entity.{js,ts}')],
     // migrations: [path?.join(__dirname, 'migrations', '*.{js,ts}')],
     ssl: { rejectUnauthorized: false },
-    synchronize: false,
+    synchronize: true,
   };
 };
